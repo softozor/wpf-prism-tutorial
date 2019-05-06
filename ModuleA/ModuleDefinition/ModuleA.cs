@@ -30,7 +30,8 @@ namespace ModuleA
 
     void RegisterServices()
     {
-      container.RegisterType<ITextService, TextService>();
+      var textService = new TextService();
+      container.RegisterInstance<ITextService>(textService);
     }
   }
 }

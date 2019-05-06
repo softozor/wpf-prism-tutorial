@@ -6,6 +6,10 @@
              xmlns:local="clr-namespace:ModuleA"
              mc:Ignorable="d">
     <Grid Background="Orange">
-       <TextBlock Text="{Binding Text}"/>
+        <StackPanel>
+            <TextBlock Text="{Binding Text}"/>
+            <TextBox MinWidth="192" x:Name="textValue"/>
+            <Button Content="Change Text" Command="{Binding ChangeTextCommand}" CommandParameter="{Binding ElementName=textValue,Path=Text}"/>
+        </StackPanel>
     </Grid>
 </UserControl>
