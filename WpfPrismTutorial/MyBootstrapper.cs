@@ -1,5 +1,6 @@
 ﻿using Prism.Modularity;
 using Prism.Unity;
+using System;
 using System.IO;
 using System.Windows;
 
@@ -9,10 +10,8 @@ namespace WpfPrismTutorial
   {
     protected override IModuleCatalog CreateModuleCatalog()
     {
-      FileStream catalogStream = new FileStream(@".\modulecatalog.xaml", FileMode.Open);
-      var catalog = Prism.Modularity.ModuleCatalog.CreateFromXaml(catalogStream);
-      catalogStream.Dispose();
-      return catalog;
+       // for this to work, modulecatalog.xaml needs to be a resource (this is set in the file's properties)
+       return Prism.Modularity.ModuleCatalog.CreateFromXaml(new Uri("modulecatalog.xaml", UriKind.Relative));
     }
 
     protected override DependencyObject CreateShell()

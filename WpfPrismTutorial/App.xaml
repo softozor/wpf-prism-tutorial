@@ -2,6 +2,12 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfPrismTutorial">
+    <!-- In a Prism application, we do not specify the MainWindow (= Shell)'s URI here 
+         because it is the Bootstrapper's responsibility to create it. The Shell indeed 
+         depends in general on services (e.g. RegionManager) that need to be registered 
+         before the Shell can be displayed. 
+        (https://prismlibrary.github.io/docs/wpf/legacy/Initializing.html#creating-the-shell)
+    -->
     <Application.Resources>
          
     </Application.Resources>
