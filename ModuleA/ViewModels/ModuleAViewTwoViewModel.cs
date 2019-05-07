@@ -1,4 +1,5 @@
 ﻿using Interfaces;
+using Prism.Events;
 using System.ComponentModel;
 
 namespace ModuleA.ViewModels
@@ -7,10 +8,16 @@ namespace ModuleA.ViewModels
   {
     readonly ITextService textService;
 
-    public ModuleAViewTwoViewModel(ITextService textService)
+    public ModuleAViewTwoViewModel(ITextService textService, IEventAggregator eventAggregator)
     {
       this.textService = textService;
-      textService.TextChanged += (s, e) => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Text"));
+      var evt = eventAggregator.GetEvent<TextChangedEvent>();
+      evt.Subscribe(OnTextChangedReceived);
+    }
+
+    private void OnTextChangedReceived(string newText)
+    {
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Text"));
     }
 
     public int Text { get => textService.GetText().Length; }
