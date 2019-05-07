@@ -7,16 +7,12 @@
         xmlns:local="clr-namespace:WpfPrismTutorial"
         mc:Ignorable="d"
         Title="MainWindow">
-    <Grid x:Name="LayoutRoot" Background="White">
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+    <ItemsControl prism:RegionManager.RegionName="ParentRegion"
+                  prism:RegionManager.RegionContext="Initial Value">
 
         <ItemsControl prism:RegionManager.RegionName="ListRegion"/>
 
         <ContentControl prism:RegionManager.RegionName="MainRegion" Grid.Column="1"/>
 
-    </Grid>
+    </ItemsControl>
 </Window>
